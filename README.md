@@ -1,0 +1,2 @@
+# spectrwm
+Dotfiles for Spectrwm
