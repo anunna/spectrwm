@@ -1,0 +1,56 @@
+# Torrc based on:
+# https://wiki.gentoo.org/wiki/Tor
+
+User Tor
+Log notice stdout
+
+# Geoip path
+GeoIPFile /usr/share/tor/geoip
+GeoIPv6File /usr/share/tor/geoip6
+
+DataDirectory /var/lib/tor/data
+
+# Circuit
+CircuitBuildTimeout 30
+NumEntryGuards 6
+KeepalivePeriod 60
+NewCircuitPeriod 15
+
+# Performance
+AvoidDiskWrites 1
+NumCPUs 4
+
+# More protection 
+Sandbox 1 
+
+# Stream isolation, prefer port between 40000-55000
+# default
+SocksPort 127.0.0.1:9050
+# gpg client
+SocksPort 127.0.0.1:9100
+# privoxy (default web)
+SocksPort 127.0.0.1:9150
+# youtube.com
+SocksPort 127.0.0.1:9151
+# transfer.sh
+SocksPort 127.0.0.1:9152
+# *.onion
+Socksport 127.0.0.1:9153
+
+# if ssh (hidden service)
+HiddenServiceDir /var/lib/tor/hidden_service/ssh
+HiddenServicePort 22 127.0.0.1:22
+
+#
+# ControlPort
+#
+
+ControlPort 9051
+
+# For ControlPort, add auth method with password, set a hash value 
+# with command: tor --hash-password "password"
+
+# HashedControlPassword <setHashedValue>
+# CookieAuthentication 1
+
+
