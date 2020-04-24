@@ -177,8 +177,11 @@ c.content.headers.do_not_track = True
 c.content.headers.referer = 'same-domain'
 
 ## User agent to send. Unset to send the default.
-## Type: String
-c.content.headers.user_agent = None
+## Type: FormatString
+config.set(
+    'content.headers.user_agent',
+    'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}',
+    )
 
 ## Whether host blocking is enabled.
 ## Type: Bool
