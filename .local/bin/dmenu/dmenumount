@@ -4,7 +4,7 @@
 # be prompted to give a mountpoint from already existsing directories. If you
 # input a novel directory, it will prompt you to create that directory.
 
-alias dmenu="dmenu -nb '#131310' -sb '#304030' -fn 'Terminus:size=8'"
+alias dmenu="dmenu -nb '#000000' -sb '#101010' -fn 'Terminus:size=8'"
 getmount() { \
 	[ -z "$chosen" ] && exit 1
 	mp="$(find $1 2>/dev/null | dmenu -i -p "Type in mount point.")"
