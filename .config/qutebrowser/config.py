@@ -182,7 +182,6 @@ config.set(
     'content.headers.user_agent',
     'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}',
     )
-
 ## Whether host blocking is enabled.
 ## Type: Bool
 c.content.host_blocking.enabled = True
@@ -931,11 +930,10 @@ c.url.searchengines = {
         'tpb': 'http://thepiratebay.org/search/{}',
         'laincat': 'http://lainchan.org/{}/catalog.html',
         'tw': 'https://twitter.com/{}',
-        'mic': 'https://docs.microsoft.com/en-us/search/?search={}&catagory=All',
+        'ms': 'https://docs.microsoft.com/en-us/search/?search={}&catagory=All',
         '8': 'https://8ch.net/{}',
         'eb': 'https://ebay.com/sch/{}',
         'etym': 'http://etymonline.com/index.php?allowed_in_frame=0&search={}',
-        'ddg': 'https://duckduckgo.com/?q={}&t=ha&iar=images',
         'aw': 'https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}',
         '4cat': 'https://boards.4chan.org/{}/catalog',
         'lain': 'http://lainchan.org/{}',
@@ -948,9 +946,7 @@ c.url.searchengines = {
         '4': 'https://boards.4chan.org/{}',
         'thw': 'http://www.thinkwiki.org/w/index.php?search={}&title=Special%3ASearch',
         'vw': 'http://vim.wikia.com/wiki/Special:Search?fulltext=Search&query={}',
-        'bc': 'https://www.bitchute.com/search?q={}&sort=date_created%20desc',
-        'mdbg': 'https://mdbg.net/chinese/dictionary?page=worddict&wdrst=0&wdqb={}',
-        'job': 'https://www.careers24.com/jobs/results.aspx?kw={}',
+        'yn': 'https://yandex.com/images/search?text={}',
         }
 
 
@@ -1260,21 +1256,21 @@ config.bind('<Escape>', 'leave-mode', mode='register')
 ###########################################################
 
 base00 = "#000000"
-base01 = "#000000"
-base02 = "#9f7775"
-base03 = "#7f7f5f"
-base04 = "#141414"
-base05 = "#ffffbe"
-base06 = "#efc7c5"
-base07 = "#ffffbe"
-base08 = "#e80000"
-base09 = "#d7a804"
-base0A = "#fffd15"
-base0B = "#fffd15"
-base0C = "#fff25b"
-base0D = "#904410"
-base0E = "#ec070a"
-base0F = "#cb4000"
+base01 = "#313133"
+base02 = "#3e313b"
+base03 = "#6b636b"
+base04 = "#000000"
+base05 = "#d7c7d7"
+base06 = "#8b3fa1"
+base07 = "#c9cac5"
+base08 = "#bd31b4"
+base09 = "#8b3fa1"
+base0A = "#eea1e9"
+base0B = "#8b3fa1"
+base0C = "#8b3fa1"
+base0D = "#8b3fa1"
+base0E = "#8b3fa1"
+base0F = "#8f2496"
 
 # set qutebrowser colors
 
@@ -1538,11 +1534,12 @@ c.colors.tabs.selected.odd.fg = base00
 c.colors.tabs.selected.odd.bg = base05
 
 # Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = base05
+c.colors.tabs.selected.even.fg = base00
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = base00
+c.colors.tabs.selected.even.bg = base05
 
 # Background color for webpages if unset (or empty to use the theme's
 # color).
 # c.colors.webpage.bg = base00
+
