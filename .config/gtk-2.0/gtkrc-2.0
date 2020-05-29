@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/anunna/.gtkrc-2.0.mine"
-gtk-theme-name="autumn_forest"
-gtk-icon-theme-name="oomox-autumn_forest"
+gtk-theme-name="nothingtosee"
+gtk-icon-theme-name="oomox-nothingtosee"
 gtk-font-name="Sans 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
