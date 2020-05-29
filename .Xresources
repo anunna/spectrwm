@@ -1,0 +1,64 @@
+!------------------------------------------------------------
+! Xresources
+!------------------------------------------------------------
+! main program settings
+!------------------------------------------------------------
+! st
+st.font:     xos4 Roboto Mono:pixelsize=12
+st.borderpx: 10
+*.cursorColor: #ffff00
+*.alpha:       0.96
+!------------------------------------------------------------
+! colour-scheme
+!------------------------------------------------------------
+*background:  #000000
+*foreground:  #d7c7d7
+*color0:  #313133
+*color1:  #8b3fa1
+*color2:  #721c87
+*color3:  #8b3fa1
+*color4:  #721c87
+*color5:  #721c87
+*color6:  #721c87
+*color7:  #8b3fa1
+*color8:  #3e313b
+*color9:  #bd31b4
+*color10:  #8b3fa1
+*color11:  #eea1e9
+*color12:  #8b3fa1
+*color13:  #8b3fa1
+*color14:  #8b3fa1
+*color15:  #c9cac5
+
+
+#ifdef background_opacity
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15:      base07
+
+!------------------------------------------------------------
+! Xft font configuration
+!------------------------------------------------------------
+Xft.autohint:  0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting:   0
+Xft.antialias: 1
+Xft.rgba:      rgb
