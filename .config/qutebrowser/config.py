@@ -258,13 +258,29 @@ c.content.local_content_can_access_remote_urls = False
 ## Type: Bool
 c.content.local_storage = True
 
-## Allow websites to record audio/video.
+## Allow websites to record audio.
 ## Type: BoolAsk
 ## Valid values:
 ##   - true
 ##   - false
 ##   - ask
-c.content.media_capture = 'ask'
+c.content.media.audio_capture = 'ask'
+
+## Allow websites to record video.
+## Type: BoolAsk
+## Valid values:
+##  - true
+##  - false
+##  - ask
+c.content.media.video_capture = 'ask'
+
+## Allow websites to record audio/video.
+## Type: BoolAsk
+## Valid values:
+##  - true
+##  - false
+##  - ask
+c.content.media.audio_video_capture = 'ask'
 
 ## Location of a netrc-file for HTTP authentication. If unset, `~/.netrc`
 ## is used.
@@ -386,10 +402,6 @@ c.fonts.completion.category = 'bold 10pt Roboto Mono'
 ## Type: Font
 c.fonts.completion.entry = '10pt Roboto Mono'
 
-## Font used for the debugging console.
-## Type: QtFont
-c.fonts.debug_console = '10pt Roboto Mono'
-
 ## Font used for the downloadbar.
 ## Type: Font
 c.fonts.downloads = '10pt Roboto Mono'
@@ -426,10 +438,6 @@ c.fonts.prompts = '10pt Roboto Mono'
 ## Font used in the statusbar.
 ## Type: Font
 c.fonts.statusbar = '10pt Roboto Mono'
-
-## Font used in the tab bar.
-## Type: QtFont
-c.fonts.tabs = '10pt Roboto Mono'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
@@ -587,7 +595,7 @@ c.input.partial_timeout = 5000
 ## Enable Opera-like mouse rocker gestures. This disables the context
 ## menu.
 ## Type: Bool
-c.input.rocker_gestures = False
+c.input.mouse.rocker_gestures = False
 
 ## Enable Spatial Navigation. Spatial navigation consists in the ability
 ## to navigate between focusable elements in a Web page, such as
@@ -674,7 +682,8 @@ c.qt.force_software_rendering = "chromium"
 ##  - always
 ##  - never
 ##  - when-searching
-c.scrolling.bar = "never"
+##  - overlay
+c.scrolling.bar = "overlay"
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
@@ -682,7 +691,7 @@ c.scrolling.bar = "never"
 c.scrolling.smooth = False
 
 ## The name of the session to save by default. If this is set to null,
-## the session which was last loaded is saved.
+## the session which was last loaded is overlay"
 ## Type: SessionName
 c.session.default_name = None
 
@@ -736,8 +745,12 @@ c.session.default_name = None
 c.spellcheck.languages = []
 
 ## Hide the statusbar unless a message is shown.
-## Type: Bool
-c.statusbar.hide = True
+## Type: String
+## Valid values:
+##  - always
+##  - never
+##  - in-mode #only show outside of normal mode
+c.statusbar.show = 'in-mode'
 
 ## Padding for the statusbar.
 ## Type: Padding
@@ -894,6 +907,7 @@ c.tabs.wrap = True
 ##   - naive: Use simple/naive check.
 ##   - dns: Use DNS requests (might be slow!).
 ##   - never: Never search automatically.
+##   - schemeless: always opens a search unless the given URL includes an explicit scheme.
 c.url.auto_search = 'naive'
 
 ## The page to open if :open -t/-b/-w is used without URL. Use
