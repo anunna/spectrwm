@@ -1,64 +1,80 @@
-!------------------------------------------------------------
-! Xresources
-!------------------------------------------------------------
-! main program settings
-!------------------------------------------------------------
-! st
-st.font:     xos4 Roboto Mono:pixelsize=12
-st.borderpx: 10
-*.cursorColor: #ffff00
-*.alpha:       0.96
-!------------------------------------------------------------
-! colour-scheme
-!------------------------------------------------------------
-*background:  #000000
-*foreground:  #d7c7d7
-*color0:  #313133
-*color1:  #8b3fa1
-*color2:  #721c87
-*color3:  #8b3fa1
-*color4:  #721c87
-*color5:  #721c87
-*color6:  #721c87
-*color7:  #8b3fa1
-*color8:  #3e313b
-*color9:  #bd31b4
-*color10:  #8b3fa1
-*color11:  #eea1e9
-*color12:  #8b3fa1
-*color13:  #8b3fa1
-*color14:  #8b3fa1
-*color15:  #c9cac5
+!! Colorscheme
+
+! special
+*.foreground: #f1acee
+*.background: #000000
+*.cursorColor: #afbfbf
+
+! black
+*.color0: #000000
+*.color8: #822086
+
+! red
+*.color1: #5b3239
+*.color9: #5b3239
+
+! green
+*.color2: #644536
+*.color10: #644536
+
+! yellow
+*.color3: #704d43
+*.color11: #f1acee
+
+! blue
+*.color4: #550d63
+*.color12: #f15ef5
+
+! magenta
+*.color5: #b81fc0
+*.color13: #f15ef5
+
+! cyan
+*.color6: #bc62c2
+*.color14: #f1acee
+
+! white
+*.color7: #f1acee
+*.color15: #f1acee
+
+!! URxvt Appearance
+*.font: xft:Iosevka:style=Regular:size=10
+*.boldFont: xft:Iosevka:style=Bold:size=10
+*.italicFont: xft:Iosevka:style=Italic:size=10
+*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=10
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: qutebrowser
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
 
 
-#ifdef background_opacity
-*background:   base00
-*cursorColor:  base05
-
-*color0:       base00
-*color1:       base08
-*color2:       base0B
-*color3:       base0A
-*color4:       base0D
-*color5:       base0E
-*color6:       base0C
-*color7:       base05
-
-*color8:       base03
-*color9:       base09
-*color10:      base01
-*color11:      base02
-*color12:      base04
-*color13:      base06
-*color14:      base0F
-*color15:      base07
-
-!------------------------------------------------------------
-! Xft font configuration
-!------------------------------------------------------------
-Xft.autohint:  0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting:   0
-Xft.antialias: 1
-Xft.rgba:      rgb
