@@ -38,10 +38,10 @@
 *.color15: #F8F8F8
 
 !! URxvt Appearance
-*.font: xft:Iosevka:style=Regular:size=10
-*.boldFont: xft:Iosevka:style=Bold:size=10
-*.italicFont: xft:Iosevka:style=Italic:size=10
-*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=10
+*.font: xft:Iosevka:style=Regular:size=11.5
+*.boldFont: xft:Iosevka:style=Bold:size=11.5
+*.italicFont: xft:Iosevka:style=Italic:size=11.5
+*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11.5
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
