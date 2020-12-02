@@ -13,3 +13,7 @@
 # Here we run the proper command to run when the graphical environment starts.
 
 exec spectrwm
+
+# wallpaper
+
+exec feh --bg-fill ~/.config/wall.png
