@@ -1,6 +1,14 @@
 """"""""""""""""""""""""""""""""""""""""""""""""
-" Configuration file for vim and nvim          
+" Configuration file for vim
 """"""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off        " required
+set rtp+=~/.vim/bundle/Vundle.vim
+
+Plugin 'VundleVim/Vundle.vim
+
 " appearance
 """"""""""""""""""""""""""""""""""""""""""""""""
 syntax on
@@ -103,43 +111,4 @@ let g:netrw_browser_split = 4
 "	autocmd!
 "	autocmd VimEnter * :Vexplore
 "augroup END
-""""""""""""""""""""""""""""""""""""""""""""
-
-" functions 
-""""""""""""""""""""""""""""""""""""""""""""
-" Pad - A Goyo-ish mode with prose elements
-let g:ProseOn=0
-function! TogglePad()
-    if !g:ProseOn
-        call Pad()
-    else
-        call PadOff()
-    endif
-endfunction
-
-function! Pad()
-    echo "Pad: On"
-    let g:ProseOn=1
-    noremap j gj
-    noremap k gk
-    noremap 0 g0
-    noremap $ g$
-    noremap A g$a
-    noremap I g0i
-    setlocal laststatus=0 nolinebreak nonumber norelativenumber t_Co=256 foldcolumn=9
-    syntax on
-    hi! link FoldColumn Normal
-endfunction
-
-function! PadOff()
-    echo "Pad: Off"
-    let g:ProseOn=0
-    noremap j j
-    noremap k k
-    noremap 0 0
-    noremap $ $
-    noremap A A
-    noremap I I
-    setlocal laststatus=2 nolinebreak number relativenumber t_Co=256 foldcolumn=0
-endfunction
 """"""""""""""""""""""""""""""""""""""""""""
