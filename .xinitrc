@@ -10,6 +10,11 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+
+# urxvt settings
+
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
 # Here we run the proper command to run when the graphical environment starts.
 
 exec spectrwm
