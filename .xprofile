@@ -1,8 +1,6 @@
 mpd &
-setbg &
 xcompmgr &
 dunst &
 xset r 300 50 &
 unclutter &
-./.screenlayout/tri-mon.sh
 feh --bg-fill .config/wall.png
