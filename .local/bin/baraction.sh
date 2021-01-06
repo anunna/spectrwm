@@ -1,32 +1,115 @@
 #!/bin/bash
-# baraction.sh for spectrwm status bar
-# From http://wiki.archlinux.org/index.php/Scrotwm
+# Requires: acpi, iostat, lm-sensors.
 
-SLEEP_SEC=5
-	#spectrwm bar_print can't handle UTF-8 characters, such as degree symbol
-	#Core 0:      +67.0°C  (crit = +100.0°C)
-	eval $(sensors 2>/dev/null | sed s/[°+]//g | awk '/^Core 0/ {printf "CORE0TEMP=%s;", $3}; /^Core 1/ {printf "CORE1TEMP=%s;",$3}; /^fan1/ {printf "FANSPD=%s;",$2};' -)
-	TEMP_STR="Tcpu=$CORE0TEMP,$CORE1TEMP F=$FANSPD"
 
-	WLAN_ESSID=$(iwconfig wlan0 | awk -F "\"" '/wlan0/ { print $2 }')
-	eval $(cat /proc/net/wireless | sed s/[.]//g | awk '/wlan0/ {printf "WLAN_QULTY=%s; WLAN_SIGNL=%s; WLAN_NOISE=%s", $3,$4,$5};' -)
-	BCSCRIPT="scale=0;a=100*$WLAN_QULTY/70;print a"
-	WLAN_QPCT=`echo $BCSCRIPT | bc -l`
-	WLAN_POWER=`iwconfig 2>/dev/null| grep "Tx-Power"| awk {'print $4'}|sed s/Tx-Power=//`
-	WLAN_STR="$WLAN_ESSID: Q=$WLAN_QPCT% S/N="$WLAN_SIGNL"/"$WLAN_NOISE"dBm T="$WLAN_POWER"dBm"
+############################## 
+#	    DISK
+##############################
 
-	CPUFREQ_STR=`echo "Freq:"$(cat /proc/cpuinfo | grep 'cpu MHz' | sed 's/.*: //g; s/\..*//g;')`
-	CPULOAD_STR="Load:$(uptime | sed 's/.*://; s/,//g')"
+hdd() {
+	  hdd="$(df -h /home | grep /dev | awk '{print $3 " / " $5}')"
+	    echo -e " $hdd"
+    }
+##############################
+#	    RAM
+##############################
 
-	eval $(awk '/^MemTotal/ {printf "MTOT=%s;", $2}; /^MemFree/ {printf "MFREE=%s;",$2}' /proc/meminfo)
-	MUSED=$(( $MTOT - $MFREE ))
-	MUSEDPT=$(( ($MUSED * 100) / $MTOT ))
-	MEM_STR="Mem:${MUSEDPT}%"
+mem() {
+used="$(free | grep Mem: | awk '{print $3}')"
+total="$(free | grep Mem: | awk '{print $2}')"
 
-	echo -e "$CPULOAD_STR  $MEM_STR"
-        #alternatively if you prefer a different date format
-        #DATE_STR=`date +"%H:%M %a %d %b`
-	#echo -e "$DATE_STR   $POWER_STR  $TEMP_STR  $CPUFREQ_STR  $CPULOAD_STR  $MEM_STR  $WLAN_STR"
+totalh="$(free -h | grep Mem: | awk '{print $2}' | sed 's/Gi/G/')"
 
-	sleep $SLEEP_SEC
-done
+ram="$(( 200 * $used/$total - 100 * $used/$total ))% / $totalh "
+
+echo $ram
+}
+##############################	
+#	    CPU
+##############################
+
+cpu() {
+	  read cpu a b c previdle rest < /proc/stat
+	    prevtotal=$((a+b+c+previdle))
+	      sleep 0.5
+	        read cpu a b c idle rest < /proc/stat
+		  total=$((a+b+c+idle))
+		    cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+		      echo -e "  $cpu%"
+	      }
+##############################
+#	    VOLUME
+##############################
+
+vol() {
+	vol="$(amixer -D default get Master | awk -F'[][]' 'END{ print $4":"$2 }')"
+	echo -e " $vol"
+}
+
+#############################
+#	    VPN
+##############################
+
+vpn() {
+	state="$(ip a | grep tun0 | grep inet | wc -l)"
+	
+if [ $state = 1 ]; then
+    echo "on"
+else
+    echo "off"
+fi
+}
+## WEATHER
+weather() {
+	wthr="$(sed 20q ~/.config/weather.txt | grep value | awk '{print $2 $3}' | sed 's/"//g')"
+	echo " $wthr"
+}
+
+## TEMP
+temp() {
+	tmp="$(grep temp_C ~/.config/weather.txt | awk '{print $2}' | sed 's/"//g' | sed 's/,/ C/g')"
+	echo " $tmp"
+}
+
+## BATTERY
+bat() {
+batstat="$(cat /sys/class/power_supply/BAT0/status)"
+battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+    if [ $batstat = 'Unknown' ]; then
+    batstat=""
+    elif [[ $battery -ge 5 ]] && [[ $battery -le 19 ]]; then
+    batstat=""
+    elif [[ $battery -ge 20 ]] && [[ $battery -le 39 ]]; then
+    batstat=""
+    elif [[ $battery -ge 40 ]] && [[ $battery -le 59 ]]; then
+    batstat=""
+    elif [[ $battery -ge 60 ]] && [[ $battery -le 79 ]]; then
+    batstat=""
+    elif [[ $battery -ge 80 ]] && [[ $battery -le 95 ]]; then
+    batstat=""
+    elif [[ $battery -ge 96 ]] && [[ $battery -le 100 ]]; then
+    batstat=""
+fi
+
+echo "$batstat  $battery %"
+}
+
+network() {
+wire="$(ip a | grep enp0s31f6 | grep inet | wc -l)"
+wifi="$(ip a | grep wlp2s0 | grep inet | wc -l)"
+
+if [ $wire = 1 ]; then 
+    echo " "
+elif [ $wifi = 1 ]; then
+    echo " "
+else 
+    echo "睊 "
+fi
+}
+
+      SLEEP_SEC=2
+      #loops forever outputting a line every SLEEP_SEC secs
+      while :; do     
+    echo "$(cpu) |  $(mem) |  $(hdd) |  $(vpn) |  $(vol) | $(bat) | $(weather) $(temp) | $(network)|"
+		sleep $SLEEP_SEC
+		done
