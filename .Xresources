@@ -39,10 +39,10 @@
 *.color15: #F8F8F8
 
 !! URxvt Appearance
-*.font: xft:Iosevka:style=Regular:size=11.5
-*.boldFont: xft:Iosevka:style=Bold:size=11.5
-*.italicFont: xft:Iosevka:style=Italic:size=11.5
-*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=11.5
+*.font: xft:Iosevka:style=Regular:size=12
+*.boldFont: xft:Iosevka:style=Bold:size=12
+*.italicFont: xft:Iosevka:style=Italic:size=12
+*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
@@ -53,8 +53,9 @@ URxvt.saveline: 2048
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-URxvt.depth: 24
+URxvt.depth: 32
 URxvt.iso14755: false
+URxvt.background: [96]#000000
 
 !! Common Keybinds for Navigations
 URxvt.keysym.Shift-Up: command:\033]720;1\007
