@@ -15,12 +15,14 @@ hdd() {
 ##############################
 
 mem() {
-used="$(free | grep Mem: | awk '{print $3}')"
-total="$(free | grep Mem: | awk '{print $2}')"
+used="$(free -h | grep Mem: | awk '{print $3}')"
+total="$(free -h| grep Mem: | awk '{print $2}')"
 
 totalh="$(free -h | grep Mem: | awk '{print $2}' | sed 's/Gi/G/')"
+usedh="$(free -h | grep Mem: | awk '{print $3}' | sed 's/Mi/M/')"
 
-ram="$(( 200 * $used/$total - 100 * $used/$total ))% / $totalh "
+#ram="$(( 200 * $used/$total - 100 * $used/$total ))% / $totalh "
+ram="$usedh / $totalh" 
 
 echo $ram
 }
