@@ -3,4 +3,6 @@ xcompmgr &
 dunst &
 xset r 300 50 &
 unclutter &
+urxvtd &
 feh --bg-fill .config/wall.png
+xrandr --output DP1-3 --primary --left-of HDMI1
