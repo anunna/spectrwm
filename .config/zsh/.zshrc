@@ -4,7 +4,7 @@
 # x
 autoload -U colors && colors
 PS1="%{$fg[red]%}[%{$fg[yellow]%}$USER%{$fg[red]%}] %{$fg[red]%}[%{$fg[yellow]%}%~%{$fg[red]%}]
-%{$fg[green]%}x%{$reset_color%} "
+%{$fg[green]%}>%{$reset_color%} "
 
 # Load aliases and shortcuts if existent
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
