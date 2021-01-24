@@ -1,15 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Configuration file for vim
 """"""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-filetype off        " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-
+""""""""""""""""""""""""""""""""""""""""""""""""
 " appearance
 """"""""""""""""""""""""""""""""""""""""""""""""
 syntax on
@@ -24,6 +18,7 @@ set number relativenumber
 colo peachpuff
 set modelines=0
 set wrap
+""""""""""""""""""""""""""""""""""""""""""""""""
 " formating
 """"""""""""""""""""""""""""""""""""""""""""""""
 set formatoptions=tcqrn1
@@ -37,12 +32,17 @@ set ignorecase
 set magic
 set scrolloff=5
 set backspace=indent,eol,start
+
+" Explicitly render different types of whitespaces differently
+" and render trailing spaces.
+set list listchars=tab:→\ ,nbsp:␣,trail:•
+
+""""""""""""""""""""""""""""""""""""""""""""""""
 " speed vim up
 """"""""""""""""""""""""""""""""""""""""""""""""
 set ttyfast 
 set lazyredraw
 "set list
-"set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 " searching
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -50,7 +50,6 @@ set hlsearch
 set incsearch
 set ignorecase
 " misc.
-set nocompatible
 set encoding=utf-8
 " custom mappings 
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -89,11 +88,11 @@ set statusline+=[%P]
 set statusline+=\  
 set statusline+=[%L\ lines]
 
-hi Statusline ctermfg=0 ctermbg=12
+hi Statusline ctermfg=1 ctermbg=0
 " reset colour when switching modes
 if version >= 700
   au InsertEnter * hi Statusline ctermfg=5 ctermbg=0
-  au InsertLeave * hi Statusline ctermfg=0 ctermbg=5
+  au InsertLeave * hi Statusline ctermfg=1 ctermbg=0
 endif
 
 set shell=/bin/zsh
