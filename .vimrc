@@ -12,12 +12,11 @@ set showmode
 set showcmd
 set cmdheight=1
 set matchpairs+=<:>
-
 set number relativenumber
-
 colo peachpuff
 set modelines=0
 set wrap
+
 """"""""""""""""""""""""""""""""""""""""""""""""
 " formating
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -40,8 +39,9 @@ set list listchars=tab:→\ ,nbsp:␣,trail:•
 """"""""""""""""""""""""""""""""""""""""""""""""
 " speed vim up
 """"""""""""""""""""""""""""""""""""""""""""""""
-set ttyfast 
+set ttyfast
 set lazyredraw
+set noswapfile
 "set list
 
 " searching
@@ -51,7 +51,7 @@ set incsearch
 set ignorecase
 " misc.
 set encoding=utf-8
-" custom mappings 
+" custom mappings
 """"""""""""""""""""""""""""""""""""""""""""""""
 nnoremap U <c-r>
 nnoremap W <c-w>
@@ -106,9 +106,3 @@ let g:netrw_list_hide = '.git,.jpg,.png,.svg'
 let g:netrw_altv = 1
 let g:netrw_banner = 0
 let g:netrw_browser_split = 4
-""""""""""""""""""""""""""""""""""""""""""""
-"augroup ProjectDrawer
-"	autocmd!
-"	autocmd VimEnter * :Vexplore
-"augroup END
-""""""""""""""""""""""""""""""""""""""""""""
