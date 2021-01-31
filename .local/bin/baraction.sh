@@ -44,7 +44,7 @@ cpu() {
 ##############################
 
 vol() {
-	vol="$(amixer -D default get Master | awk -F'[][]' 'END{ print $4":"$2 }')"
+	vol="$(amixer -D default get Master | awk -F'[][]' 'END{ print $2 }')"
 	echo -e " $vol"
 }
 
@@ -97,8 +97,8 @@ echo "$batstat  $battery %"
 }
 
 network() {
-wire="$(ip a | grep enp0s31f6 | grep inet | wc -l)"
-wifi="$(ip a | grep wlp2s0 | grep inet | wc -l)"
+wire="$(ip a | grep eth0 | grep inet | wc -l)"
+wifi="$(ip a | grep wlan0 | grep inet | wc -l)"
 
 if [ $wire = 1 ]; then 
     echo " "
@@ -109,9 +109,9 @@ else
 fi
 }
 
-      SLEEP_SEC=2
+      #SLEEP_SEC=2
       #loops forever outputting a line every SLEEP_SEC secs
       while :; do     
-    echo "$(cpu) |  $(mem) |  $(hdd) |  $(vpn) |  $(vol) | $(bat) | $(weather) $(temp) | $(network)|"
+    echo "$(cpu) |  $(mem) |  $(hdd) |  $(vpn) |  $(vol) | $(bat) | $(network) |"
 		sleep $SLEEP_SEC
 		done
